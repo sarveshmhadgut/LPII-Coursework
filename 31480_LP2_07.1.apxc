@@ -1,0 +1,33 @@
+public class BinarySearchExample {
+    public static Integer binarySearch(List<Integer> arr, Integer target) {
+        Integer left = 0;
+        Integer right = arr.size() - 1;
+
+        while (left <= right) {
+            Integer mid = left + (right - left) / 2;
+
+            if (arr[mid] == target) {
+                return mid;
+            } else if (arr[mid] < target) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return -1;
+    }
+
+    public static void testBinarySearch() {
+        List<Integer> numbers = new List<Integer>{10, 20, 30, 40, 50, 60};
+
+        Integer target = 40;
+
+        Integer index = binarySearch(numbers, target);
+
+        if (index != -1) {
+            System.debug('Target found at index: ' + index);
+        } else {
+            System.debug('Target not found in the list.');
+        }
+    }
+}
